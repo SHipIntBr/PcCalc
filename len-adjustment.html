@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+    <title>Length and Saw Time Calculator</title>
+
+
+    
+    <style>
+       /* body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }*/
+        input[type="number"] {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        #result {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: #e0ffe0;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+    </style> 
+</head>
+
+<body>
+    
+    <h1>Calculate Length</h1>
+
+      <!-- navigation pane-->
+      <nav class="dropdown">
+        <button class="dropbtn">Select Tool</button>
+        <div class="dropdown-content">
+            <a href="#" id="option1">8 Point Check</a>
+            <a href="#" id="option2">Length Adjust</a>
+            <a href="#" id="option3">Wall Adjustment</a>
+            <a href="#" id="option4">Stopwatch</a>
+        </div>
+    </nav>
+     <!-- navigation pane-->
+
+    <div id="result"></div>
+
+    <form id="sawTimeForm">
+        <label for="targetLength"><p>Target Length (inches):</p></label>
+        <input type="number" id="targetLength" name="targetLength" step="0.001" placeholder="e.g., 10.000" required>
+
+        <label for="actualLength"><p>Actual Length (inches):</p></label>
+        <input type="number" id="actualLength" name="actualLength" step="0.001" placeholder="e.g., 9.875" required>
+
+        <label for="sawTime"><p>Saw Time</p></label>
+        <input type="number" id="sawTime" name="sawTime" step="0.001" placeholder="e.g., 3.145" required>
+
+        <input type="submit" value="Calculate New Saw Time">
+    </form>
+
+    <script>document.getElementById('sawTimeForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+    
+        // Get the input values
+        const targetLength = parseFloat(document.getElementById('targetLength').value);
+        const actualLength = parseFloat(document.getElementById('actualLength').value);
+        const sawTime = parseFloat(document.getElementById('sawTime').value);
+    
+        // Calculate the new saw time
+        const newSawTime = (targetLength / actualLength) * sawTime;
+    
+        // Display the result
+        const resultDiv = document.getElementById('result');
+        resultDiv.textContent = `New Saw Time: ${newSawTime.toFixed(3)} `;
+        resultDiv.style.display = 'block';
+    });
+    
+
+    // navigation script
+document.getElementById('option1').addEventListener('click', function() {
+window.location.href = 'Home.html'; // Link to the 8 Point Check page
+});
+
+document.getElementById('option2').addEventListener('click', function() {
+window.location.href = 'len-adjustment.html'; // Link to the Saw Adjustment page
+});
+
+document.getElementById('option3').addEventListener('click', function() {
+window.location.href = 'wall-adjustment.html'; // Link to the Wall Adjustment page
+});
+
+document.getElementById('option4').addEventListener('click', function() {
+window.location.href = 'stopwatch.html'; // Link to the Stopwatch page
+});
+
+    
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Wall and Puller Speed Calculator</title>
+    <style>
+
+        /*
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }*/
+        input[type="number"] {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: #e0ffe0;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculate Puller Speed</h1>
+
+     <!-- navigation pane-->
+     <nav class="dropdown">
+        <button class="dropbtn">Select Tool</button>
+        <div class="dropdown-content">
+            <a href="#" id="option1">8 Point Check</a>
+            <a href="#" id="option2">Length Adjust</a>
+            <a href="#" id="option3">Wall Adjustment</a>
+            <a href="#" id="option4">Stopwatch</a>
+        </div>
+    </nav>
+     <!-- navigation pane-->
+
+    <div id="result"></div>
+
+    <form id="pullerSpeedForm">
+        <label for="actualWall"><p>Actual Wall (Thou):</p></label>
+        <input type="number" id="actualWall" name="actualWall" step="0.01" placeholder="e.g., 2.35" required>
+
+        <label for="targetWall"><p>Target Wall (Thou):</p></label>
+        <input type="number" id="targetWall" name="targetWall" step="0.01" placeholder="e.g., 2.50" required>
+
+        <label for="pullerSpeed"><p>Puller Speed (in m/min):</p></label>
+        <input type="number" id="pullerSpeed" name="pullerSpeed" step="0.01" placeholder="e.g., 15.00" required>
+
+        <input type="submit" value="Calculate Puller Speed">
+    </form>
+
+    <script>
+        document.getElementById('pullerSpeedForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get the input values
+            const actualWall = parseFloat(document.getElementById('actualWall').value);
+            const targetWall = parseFloat(document.getElementById('targetWall').value);
+            const pullerSpeed = parseFloat(document.getElementById('pullerSpeed').value);
+
+            // Calculate the new puller speed
+            const newPullerSpeed = (actualWall / targetWall) * pullerSpeed;
+
+            // Display the result
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `New Puller Speed: ${newPullerSpeed.toFixed(2)} m/min`;
+            resultDiv.style.display = 'block';
+        });
+
+
+            // navigation script
+        document.getElementById('option1').addEventListener('click', function() {
+        window.location.href = 'Home.html'; // Link to the 8 Point Check page
+        });
+
+        document.getElementById('option2').addEventListener('click', function() {
+        window.location.href = 'len-adjustment.html'; // Link to the Saw Adjustment page
+        });
+
+        document.getElementById('option3').addEventListener('click', function() {
+        window.location.href = 'wall-adjustment.html'; // Link to the Wall Adjustment page
+        });
+
+        document.getElementById('option4').addEventListener('click', function() {
+        window.location.href = 'stopwatch.html'; // Link to the Stopwatch page
+        });
+
+
+    </script>
+
+</body>
+</html>

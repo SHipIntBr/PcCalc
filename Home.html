@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Calculator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+        <h1>PC Calculator</h1>
+
+
+        <!-- navigation pane-->
+        <nav class="dropdown">
+            <button class="dropbtn">Select Tool</button>
+            <div class="dropdown-content">
+                <a href="#" id="option1">8 Point Check</a>
+                <a href="#" id="option2">Length Adjust</a>
+                <a href="#" id="option3">Wall Adjustment</a>
+                <a href="#" id="option4">Stopwatch</a>
+            </div>
+        </nav>
+         <!-- navigation pane-->
+
+
+        
+           <!-- <button  class="button-64" id="updateButton1"><span>Update Variable 1</span></button>
+            <button class="button-64" id="updateButton2"><span>Update Variable 2</span></button> -->
+
+        <form id="calculatorForm">
+            
+
+            <button  class="button-64" id="updateButton1"><span>Update Variable 1</span></button>
+            <button class="button-64" id="updateButton2"><span>Update Variable 2</span></button>
+            
+            <div id="pointsInputs">
+                <!-- Points inputs will be generated here -->
+            </div>
+
+            <button class="button-64" type="button"  onclick="calculate()"><span>Calculate</span></button>
+        </form>
+
+        <h2>Results</h2>
+        <p id="avgSpec"></p>
+        <p id="avgWall"></p>
+        <p id="variance"></p>
+        
+        <script src="./script.js"></script>
+        
+</body>
+</html>

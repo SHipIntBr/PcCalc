@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color:  rgb(6, 6, 24);
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        .stopwatch {
+            margin-bottom: 50px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: inline-block;
+            width: 300px;
+        }
+        .display {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button.stop {
+            background-color: #f44336;
+        }
+        button.reset {
+            background-color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Stopwatch</h1>
+
+ <!-- navigation pane-->
+ <nav class="dropdown">
+    <button class="dropbtn">Select Tool</button>
+    <div class="dropdown-content">
+        <a href="#" id="option1">8 Point Check</a>
+        <a href="#" id="option2">Length Adjust</a>
+        <a href="#" id="option3">Wall Adjustment</a>
+        <a href="#" id="option4">Stopwatch</a>
+    </div>
+</nav>
+ <!-- navigation pane-->
+
+
+    <!-- First Stopwatch -->
+    <div class="stopwatch">
+        <h3>A Side</h3>
+        <div id="display1" class="display">00:00:00.000</div>
+        <button id="start1">Start</button>
+        <button id="stop1" class="stop">Stop</button>
+        <button id="reset1" class="reset">Reset</button>
+    </div>
+
+    <!-- Second Stopwatch -->
+    <div class="stopwatch">
+        <h3>B Side </h3>
+        <div id="display2" class="display">00:00:00.000</div>
+        <button id="start2">Start</button>
+        <button id="stop2" class="stop">Stop</button>
+        <button id="reset2" class="reset">Reset</button>
+    </div>
+
+    <script>
+        function Stopwatch(display) {
+            let startTime = 0;
+            let elapsedTime = 0;
+            let intervalId;
+
+            function updateDisplay(time) {
+                const milliseconds = Math.floor(time % 1000);
+                const seconds = Math.floor((time / 1000) % 60);
+                const minutes = Math.floor((time / (1000 * 60)) % 60);
+                const hours = Math.floor((time / (1000 * 60 * 60)) % 24);
+
+                display.textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(3, '0')}`;
+            }
+
+            this.start = function() {
+                if (!intervalId) {
+                    startTime = Date.now() - elapsedTime;
+                    intervalId = setInterval(() => {
+                        elapsedTime = Date.now() - startTime;
+                        updateDisplay(elapsedTime);
+                    }, 1);
+                }
+            };
+
+            this.stop = function() {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+            };
+
+            this.reset = function() {
+                this.stop();
+                elapsedTime = 0;
+                updateDisplay(0);
+            };
+        }
+
+        // Create instances for each stopwatch
+        const stopwatch1 = new Stopwatch(document.getElementById('display1'));
+        const stopwatch2 = new Stopwatch(document.getElementById('display2'));
+
+        // Assign button functionality for the first stopwatch
+        document.getElementById('start1').addEventListener('click', () => stopwatch1.start());
+        document.getElementById('stop1').addEventListener('click', () => stopwatch1.stop());
+        document.getElementById('reset1').addEventListener('click', () => stopwatch1.reset());
+
+        // Assign button functionality for the second stopwatch
+        document.getElementById('start2').addEventListener('click', () => stopwatch2.start());
+        document.getElementById('stop2').addEventListener('click', () => stopwatch2.stop());
+        document.getElementById('reset2').addEventListener('click', () => stopwatch2.reset());
+
+        // navigation script
+        document.getElementById('option1').addEventListener('click', function() {
+        window.location.href = 'Home.html'; // Link to the 8 Point Check page
+        });
+
+        document.getElementById('option2').addEventListener('click', function() {
+        window.location.href = 'len-adjustment.html'; // Link to the Saw Adjustment page
+        });
+
+        document.getElementById('option3').addEventListener('click', function() {
+        window.location.href = 'wall-adjustment.html'; // Link to the Wall Adjustment page
+        });
+
+        document.getElementById('option4').addEventListener('click', function() {
+        window.location.href = 'stopwatch.html'; // Link to the Stopwatch page
+        });
+
+    </script>
+
+</body>
+</html>
