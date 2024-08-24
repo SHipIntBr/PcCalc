@@ -78,7 +78,7 @@ document.getElementById('updateButton2').addEventListener('click', () => {
 
 // navigation script
 document.getElementById('option1').addEventListener('click', function() {
-window.location.href = 'Home.html'; // Link to the 8 Point Check page
+window.location.href = 'index.html'; // Link to the 8 Point Check page
 });
 
 document.getElementById('option2').addEventListener('click', function() {
