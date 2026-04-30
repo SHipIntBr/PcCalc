@@ -168,3 +168,68 @@ margin-top: 20px;
 font-size: 24px;
 color: #333;
 }
+.buttons-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.swap-btn {
+    background: none;
+    border: 2px solid #00DDEB;
+    color: #00DDEB;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.swap-btn:hover {
+    background: #00DDEB;
+    color: rgb(5, 6, 45);
+    transform: scale(1.08);
+}
+
+.swap-btn:active {
+    transform: scale(0.96);
+}
+
+.pairs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.pair-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: border-color 0.25s, background 0.25s;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pair-row.active-pair {
+    border-color: #00DDEB;
+    background: rgba(0, 221, 235, 0.07);
+}
+
+.pair-label {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #00DDEB;
+    min-width: 20px;
+    text-align: center;
+}
