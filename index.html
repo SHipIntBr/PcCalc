@@ -9,7 +9,6 @@
 <body>
         <h1>PC Calculator</h1>
 
-
         <!-- navigation pane-->
         <nav class="dropdown">
             <button class="dropbtn">Select Tool</button>
@@ -20,24 +19,29 @@
                 <a href="#" id="option4">Stopwatch</a>
             </div>
         </nav>
-         <!-- navigation pane-->
-
-
-        
-           <!-- <button  class="button-64" id="updateButton1"><span>Update Variable 1</span></button>
-            <button class="button-64" id="updateButton2"><span>Update Variable 2</span></button> -->
+        <!-- navigation pane-->
 
         <form id="calculatorForm">
-            
 
-            <button  class="button-64" id="updateButton1"><span>Update Variable 1</span></button>
-            <button class="button-64" id="updateButton2"><span>Update Variable 2</span></button>
-            
+            <div class="pairs-container">
+                <div class="pair-row" id="rowA">
+                    <span class="pair-label">A</span>
+                    <button class="button-64" id="btnMinA"><span>Min Wall A (0)</span></button>
+                    <button class="button-64" id="btnMaxA"><span>Max Wall A (0)</span></button>
+                </div>
+                <div class="pair-row" id="rowB">
+                    <span class="pair-label">B</span>
+                    <button class="button-64" id="btnMinB"><span>Min Wall B (0)</span></button>
+                    <button class="button-64" id="btnMaxB"><span>Max Wall B (0)</span></button>
+                </div>
+                <button class="swap-btn" id="swapButton" type="button">A ⇄ B</button>
+            </div>
+
             <div id="pointsInputs">
                 <!-- Points inputs will be generated here -->
             </div>
 
-            <button class="button-64" type="button"  onclick="calculate()"><span>Calculate</span></button>
+            <button class="button-64" type="button" onclick="calculate()"><span>Calculate</span></button>
         </form>
 
         <h2>Results</h2>
